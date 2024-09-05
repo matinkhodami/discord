@@ -25,8 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import DropZoneFile from "@/components/DropZoneFile";
-import { toast } from '@/hooks/use-toast';
-
+import { toast } from "@/hooks/use-toast";
 
 const InitialModal = () => {
   const form = useForm<z.infer<typeof InitialServerSchema>>({
@@ -43,17 +42,16 @@ const InitialModal = () => {
   } = form;
   const onSubmit = async (data: z.infer<typeof InitialServerSchema>) => {
     const res = await axios.post("/api/servers", data);
-    if ( res.status === 200 ) {
+    if (res.status === 200) {
       toast({
-        title: 'success',
-        description: 'Server created successfully'
-      })
-      window.location.reload()
+        title: "success",
+        description: "Server created successfully",
+      });
+      window.location.reload();
     }
   };
-
   return (
-    <Dialog open>
+    <Dialog>
       <DialogContent className="dark:bg-zinc-950">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-light">
@@ -110,7 +108,7 @@ const InitialModal = () => {
               }}
             />
             <DialogFooter>
-              <Button variant="primary" className="w-full" type="submit">
+              <Button className="w-full" type="submit">
                 Create
               </Button>
             </DialogFooter>

@@ -1,11 +1,18 @@
-import React from 'react'
-
-const ServersLayout = ({ children }: { children: React.ReactNode }) => {
+import { getServers } from "@/components/server/lib/getServer";
+import NavigationSideBar from "@/components/server/navigation-sidebar";
+import { db } from "@/lib/db";
+import userData from "@/lib/user/userData";
+import { redirect } from "next/navigation";
+const ServersLayout = async ({ children }: { children: React.ReactNode }) => {
+  const user = await userData();
+  if (!user) redirect("/signin")
+  const servers = await getServers(user?.id);
   return (
-    <main className="w-full bg-zinc-800 min-h-screen">
-      <div className="md:w-[720px] mx-auto">{children}</div>
+    <main className="h-screen w-screen flex gap-4 p-2 bg-[hsl(46 100 97)] dark:bg-dark">
+      <NavigationSideBar servers={servers} />
+      {children}
     </main>
   );
-}
+};
 
-export default ServersLayout
+export default ServersLayout;

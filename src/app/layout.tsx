@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth/auth";
+import ModalProvider from "@/components/Provider/modalProvider";
 const nunito = Nunito({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
@@ -28,8 +29,8 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ModalProvider />
           <SessionProvider session={session}>{children}</SessionProvider>
-
           <Toaster />
         </ThemeProvider>
       </body>
