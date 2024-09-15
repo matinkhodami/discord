@@ -32,7 +32,7 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="w-full">
+      <DropdownMenuTrigger className="w-full" asChild>
         <button
           className={cn(
             "w-full dark:bg-dark border-4 border-b-0 border-secondary focus:outline-none outline-none rounded-md flex justify-between px-2 py-1",

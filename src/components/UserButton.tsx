@@ -19,13 +19,13 @@ const UserButton = async () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="rounded-full w-[48px] h-[48px]"></Button>
+        <Button className="rounded-full w-[48px] h-[48px]" asChild></Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="px-4">
         <DropdownMenuLabel>{user?.name}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Button size="dropdown" variant="ghost">
+          <Button size="full" variant="ghost" asChild>
             <Icon path={mdiFaceMan} size={1} />
             <span>Profile</span>
             <DropdownMenuShortcut className="ml-auto">
@@ -34,7 +34,7 @@ const UserButton = async () => {
           </Button>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Button size="dropdown" variant="ghost" event={logout}>
+          <Button size="full" variant="ghost" event={logout} asChild>
             <Icon path={mdiLogout} size={1} />
             <span>sign out</span>
             <DropdownMenuShortcut className="ml-auto">
