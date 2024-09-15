@@ -1,7 +1,7 @@
 import { db } from "@/lib/db"
 import { Server, Channel, Profile } from "@prisma/client"
 
-type serverInfo = Server & {
+export type ServerInfo = Server & {
     members: (Profile & {
         profile: Profile
     })[]
@@ -10,7 +10,7 @@ type serverInfo = Server & {
     })[]
 }
 
-const getServerInfo = async (serverID: string): Promise<serverInfo | null> => { 
+const getServerInfo = async (serverID: string): Promise<ServerInfo | null> => { 
     const server = await db.server.findUnique({
         where: {
             id: serverID
@@ -34,7 +34,7 @@ const getServerInfo = async (serverID: string): Promise<serverInfo | null> => {
             }
         }
     })
-    return server as serverInfo | null
+    return server as ServerInfo | null
 }
 
 const getServers = async (userID: string): Promise<Server[]> => {
