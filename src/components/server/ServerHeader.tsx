@@ -19,8 +19,11 @@ import {
   mdiSettingsHelper,
   mdiCog,
   mdiAccountMultiple,
+  mdiTrashCan,
+  mdiLogout,
 } from "@mdi/js";
 import { cn } from "@/lib/utils";
+import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
 
 interface ServerHeaderProps {
   server: ServerInfo | null;
@@ -44,15 +47,11 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40">
-        {(isModerator || isAdmin) && (
-          <>
-            <DropdownMenuItem className="flex justify-between w-full py-1 px-2 text-xs">
-              Invite People
-              <Icon path={mdiAccountPlus} size={0.8} />
-            </DropdownMenuItem>
-          </>
-        )}
-        {isAdmin && (
+        <DropdownMenuItem className="flex justify-between w-full py-1 px-2 text-xs text-primary hover:bg-primary/10 hover:text-primary">
+          Invite People
+          <Icon path={mdiAccountPlus} size={0.8} />
+        </DropdownMenuItem>
+        {(isAdmin || isModerator) && (
           <>
             <DropdownMenuItem className="flex justify-between w-full py-1 px-2 text-xs">
               Server Settings
@@ -64,11 +63,28 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
             </DropdownMenuItem>
           </>
         )}
-
         <DropdownMenuItem className="flex justify-between w-full py-1 px-2 text-xs">
           Create channel
           <Icon path={mdiPlus} size={0.8} />
         </DropdownMenuItem>
+        {isAdmin && (
+          <>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="flex justify-between w-full py-1 px-2 text-xs text-rose-500 hover:bg-rose-300/10 hover:text-rose-500">
+              Delete Server
+              <Icon path={mdiTrashCan} size={0.8} />
+            </DropdownMenuItem>
+          </>
+        )}
+        {!isAdmin && (
+          <>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="flex justify-between w-full py-1 px-2 text-xs text-rose-500 hover:bg-rose-300/10 hover:text-rose-500">
+              Leave Server
+              <Icon path={mdiLogout} size={0.8} />
+            </DropdownMenuItem>
+          </>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );
