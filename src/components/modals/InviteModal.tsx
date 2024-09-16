@@ -15,26 +15,40 @@ import { Input } from "@/components/ui/input";
 // import { toast } from "@/hooks/use-toast";
 import useModalStore from "@/hooks/use-modal-store";
 import Icon from "@mdi/react";
-import { mdiContentCopy, mdiFormatLetterCaseUpper, mdiRefresh } from "@mdi/js";
+import { mdiContentCopy, mdiRefresh } from "@mdi/js";
 import { Button } from "../ui/button";
 import axios from "axios";
 import { useState } from "react";
 import Loader from "../Animation/Loader";
 
 const InviteModal = () => {
-  const { isOpen, onClose, type, onOpen } = useModalStore();
+  const { isOpen, onClose, type } = useModalStore();
   const { toast } = useToast();
 
+  const [inviteCode, setInviteCode] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const isCreateServerModelOpen = isOpen && type === "invite";
   const serverData = useModalStore((state) => state.data?.server);
+
   const handleOnOpen = () => {
     onClose();
   };
   const onNew = async () => {
     setIsLoading(true);
     try {
-      await axios.patch(`/api/servers/${serverData?.id}`);
+      const updatedServer = await axios.patch(`/api/servers/${serverData?.id}`);
+      if (updatedServer.status === 200) {
+        toast({
+          title: "Success",
+          description: "new server invite code generated!",
+        });
+      }
+      setInviteCode(updatedServer.data.inviteCode)
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message as string,
+      });
     } finally {
       setIsLoading(false);
     }
@@ -62,14 +76,14 @@ const InviteModal = () => {
         <div className="flex gap-2">
           <Input
             className="focus-visible:ring-offset-0 focus-visible:ring-0 text-primary"
-            value={serverData?.inviteCode}
+            value={inviteCode || serverData?.inviteCode || "" }
           />
           <Button
             size="icon"
             variant="default"
             onClick={() => {
               window.navigator.clipboard.writeText(
-                serverData?.inviteCode || ""
+                inviteCode || serverData?.inviteCode || ""
               );
               toast({
                 title: "invite code",
