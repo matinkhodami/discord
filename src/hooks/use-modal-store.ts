@@ -1,19 +1,24 @@
+import { ServerInfo } from "@/components/server/lib/getServer";
 import { create } from "zustand";
 
-type ModalType = "createServer";
-
+type ModalType = "createServer" | "invite";
+interface ModalData {
+  server?: ServerInfo;
+}
 interface modalStore {
-  type: ModalType | null;
+  type: ModalType | null; 
+  data: ModalData
   isOpen: boolean;
-  onOpen: (type: ModalType) => void;
+  onOpen: (type: ModalType, data?: ModalData) => void;
   onClose: () => void;
 }
 
 const useModalStore = create<modalStore>((set) => ({
   type: null,
   isOpen: false,
-  onOpen(type) {
-    set({ isOpen: true, type });
+  data: {},
+  onOpen(type, data = {}) {
+    set({ isOpen: true, type, data });
   },
   onClose() {
     set({ isOpen: false, type: null });

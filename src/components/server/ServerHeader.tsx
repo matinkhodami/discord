@@ -1,3 +1,4 @@
+"use client"
 // Types
 import { MemberRole } from "@prisma/client";
 import { ServerInfo } from "./lib/getServer";
@@ -24,6 +25,7 @@ import {
 } from "@mdi/js";
 import { cn } from "@/lib/utils";
 import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
+import useModalStore from "@/hooks/use-modal-store";
 
 interface ServerHeaderProps {
   server: ServerInfo | null;
@@ -32,7 +34,7 @@ interface ServerHeaderProps {
 const ServerHeader = ({ server, role }: ServerHeaderProps) => {
   const isAdmin = role === "ADMIN";
   const isModerator = role === "MODERATOR";
-
+  const { onOpen } = useModalStore();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="w-full" asChild>
@@ -47,7 +49,12 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40">
-        <DropdownMenuItem className="flex justify-between w-full py-1 px-2 text-xs text-primary hover:bg-primary/10 hover:text-primary">
+        <DropdownMenuItem
+          className="flex justify-between w-full py-1 px-2 text-xs text-primary hover:bg-primary/10 hover:text-primary"
+          onClick={() => {
+            onOpen("invite", { server: server || undefined });
+          }}
+        >
           Invite People
           <Icon path={mdiAccountPlus} size={0.8} />
         </DropdownMenuItem>
