@@ -4,6 +4,7 @@ import type { ServerInfo } from "@/components/server/lib/getServer";
 import userData from "@/lib/user/userData";
 // Components
 import ServerHeader from "./ServerHeader";
+import Loader from "../Animation/Loader";
 
 const ServerSideBar = async ({ server }: { server: ServerInfo | null }) => {
   const user = await userData();

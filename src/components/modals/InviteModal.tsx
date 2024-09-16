@@ -32,7 +32,7 @@ const InviteModal = () => {
 
   return (
     <Dialog open={isCreateServerModelOpen} onOpenChange={handleOnOpen}>
-      <DialogContent className="dark:bg-zinc-950">
+      <DialogContent className="dark:bg-darkSecondary bg-lightMuted">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-light">
             Invite Your Friends
