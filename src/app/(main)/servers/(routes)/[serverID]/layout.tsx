@@ -16,7 +16,7 @@ const ServerIDlayout = async ({
   const server = await getServerInfo(params.serverID);
   return (
     <div className="h-full w-full rounded-md flex gap-4">
-      <aside className="w-60 h-full bg-secondary rounded-md">
+      <aside className="w-60 h-full dark:bg-darkSecondary bg-lightMuted rounded-md">
         <ServerSideBar server={server} />
       </aside>
       <main className="bg-secondary w-full rounded-md">{children}</main>

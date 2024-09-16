@@ -10,7 +10,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-dark text-primary-foreground hover:bg-dark/90",
+        default: "dark:bg-dark bg-light dark:text-primary-foreground text-black hover:bg-dark/90",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -49,10 +49,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         onClick={() => {
-          console.log("clicked");
           if (event) event();
-          console.log("clicked");
-
         }}
         ref={ref}
         {...props}

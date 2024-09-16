@@ -5,12 +5,18 @@ import { Server } from "@prisma/client";
 import NavigationItem from "@/components/server/navigation-item";
 import UserButton from "@/components/UserButton";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
 const NavigationSideBar = ({ servers }: { servers: Server[] }) => {
   return (
-    <aside className="hidden sm:flex sm:flex-col sm:justify-between sm:items-center w-[66px] h-full bg-secondary rounded-md p-2 shadow-inner">
+    <aside
+      className={cn(
+        "hidden sm:flex sm:flex-col sm:justify-between sm:items-center w-[66px] h-full rounded-md p-2 shadow-inner",
+        "bg-lightMuted dark:bg-darkSecondary"
+      )}
+    >
       <div className="flex flex-col gap-2">
         <NavigationAddButton />
-        <Separator className="w-full h-[1px] bg-gray" />
+        <Separator className="w-full h-[1px] bg-darkSecondary dark:bg-darkMuted" />
         <ScrollArea>
           <div className="flex flex-col py-2">
             {servers.map((server) => (

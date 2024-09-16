@@ -8,7 +8,7 @@ const ServersLayout = async ({ children }: { children: React.ReactNode }) => {
   if (!user) redirect("/signin")
   const servers = await getServers(user?.id);
   return (
-    <main className="h-screen w-screen flex gap-4 p-2 bg-[hsl(46 100 97)] dark:bg-dark">
+    <main className="h-screen w-screen flex gap-4 p-2 bg-light dark:bg-dark">
       <NavigationSideBar servers={servers} />
       {children}
     </main>

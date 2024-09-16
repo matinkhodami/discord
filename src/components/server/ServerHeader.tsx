@@ -40,8 +40,8 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
       <DropdownMenuTrigger className="w-full" asChild>
         <button
           className={cn(
-            "w-full dark:bg-dark border-4 border-b-0 border-secondary focus:outline-none outline-none rounded-md flex justify-between px-2 py-1",
-            "bg-white"
+            "w-full border-4 border-b-0 focus:outline-none outline-none rounded-md flex justify-between px-2 py-1",
+            "bg-[#fff] border-lightMuted dark:bg-dark dark:border-darkSecondary"
           )}
         >
           {server?.name}

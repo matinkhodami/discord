@@ -9,9 +9,8 @@ import { Button } from "@/components/ui/button";
 
 export default function ModeToggle() {
   const { setTheme, theme } = useTheme();
-  // console.log(theme);
   return (
-    <Button className="w-[48px] h-[48px] dark:bg-dark !bg-primary relative" size="icon">
+    <Button className="w-[48px] h-[48px] bg-dark dark:bg-lightPrimary text-darkPrimary-foreground dark:text-lightPrimary-foreground relative" size="icon">
       <motion.span
         animate={{
           rotate: theme === "dark" ? 180 : 0,

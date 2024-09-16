@@ -59,7 +59,7 @@ const InviteModal = () => {
             window.navigator.clipboard.writeText(serverData?.inviteCode || "")
             toast({
               title: "invite code",
-              description: "Copied to clipboard",
+              description: "Copied to clipboard!",
             })
           }}>
             <Icon path={mdiContentCopy} size={0.8} />

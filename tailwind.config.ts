@@ -22,25 +22,47 @@ export default withUt({
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        light: "hsl(var(--light-bg))",
-        dark: "hsl(var(--dark-bg))",
+
         foreground: "hsl(var(--foreground))",
         gray: "hsl(var(--gray))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+
+        // Custom Light
+        light: "#FEFFD2",
+        // Custom Light
+        lightPrimary: {
+          DEFAULT: "#FF7D29",
+          foreground: "#fff",
         },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+        // Custom Light
+        lightSecondary: {
+          DEFAULT: "#FFBF78",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        // Custom Light
+        lightMuted: {
+          DEFAULT: "#FFEEA9",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        // Custom Dark
+        dark: "#222831",
+        darkPrimary: {
+          DEFAULT: "#FD7014",
+          foreground: "#fff",
+        },
+        // Custom Light
+        darkSecondary: {
+          DEFAULT: "#393E46",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        // Custom Light
+        darkMuted: {
+          DEFAULT: "#EEEEEE",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
