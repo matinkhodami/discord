@@ -34,7 +34,7 @@ const signUp = () => {
   const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
     const res = await axios.post("/api/signup", data);
     console.log(res)
-    if ( res.status === 200 ) router.push("/api/signin");
+    if ( res.status === 200 ) router.push("/signin");
   };
   return (
     <Form {...form}>

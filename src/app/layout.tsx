@@ -21,8 +21,8 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
   return (
-    <html lang="en">
-      <body className={cn(nunito.className, " antialiased")}>
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className={cn(nunito.className, "dark:bg-dark bg-light", "antialiased")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

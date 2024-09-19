@@ -7,6 +7,7 @@ const { auth: middleware } = NextAuth(authConfig);
 export default middleware(async (req) => {
   const { pathname } = req.nextUrl;
   const isLogging = req.auth;
+  console.log("[IS_LOGGING] : ", isLogging)
   const isPublic = PUBLIC_ROUTE.includes(pathname);
   if (isPublic && !isLogging)
     return Response.redirect(new URL("/signin", req.url));

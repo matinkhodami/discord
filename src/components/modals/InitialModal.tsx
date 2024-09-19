@@ -26,9 +26,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import DropZoneFile from "@/components/DropZoneFile";
 import { toast } from "@/hooks/use-toast";
-
 const InitialModal = () => {
-  const form = useForm<z.infer<typeof InitialServerSchema>>({
+
+
+  const formAtt = useForm<z.infer<typeof InitialServerSchema>>({
     resolver: zodResolver(InitialServerSchema),
     defaultValues: {
       name: "",
@@ -39,7 +40,7 @@ const InitialModal = () => {
     handleSubmit,
     control,
     formState: { isSubmitting, errors },
-  } = form;
+  } = formAtt;
   const onSubmit = async (data: z.infer<typeof InitialServerSchema>) => {
     const res = await axios.post("/api/servers", data);
     if (res.status === 200) {
@@ -51,7 +52,7 @@ const InitialModal = () => {
     }
   };
   return (
-    <Dialog>
+    <Dialog open>
       <DialogContent className="dark:bg-zinc-950">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-light">
@@ -62,7 +63,7 @@ const InitialModal = () => {
             always change later!
           </DialogDescription>
         </DialogHeader>
-        <Form {...form}>
+        <Form {...formAtt}>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-4"
@@ -108,7 +109,7 @@ const InitialModal = () => {
               }}
             />
             <DialogFooter>
-              <Button className="w-full" type="submit">
+              <Button size="full" type="submit">
                 Create
               </Button>
             </DialogFooter>
