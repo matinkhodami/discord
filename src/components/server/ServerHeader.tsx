@@ -26,12 +26,18 @@ import {
 import { cn } from "@/lib/utils";
 import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
 import useModalStore from "@/hooks/use-modal-store";
+import leaveServer from "./lib/leaveServer";
+import useUserData from "@/hooks/use-user";
 
 interface ServerHeaderProps {
   server: ServerInfo | null;
   role: MemberRole;
 }
 const ServerHeader = ({ server, role }: ServerHeaderProps) => {
+
+  // user
+  const user = useUserData()
+
   const isAdmin = role === "ADMIN";
   const isModerator = role === "MODERATOR";
   const { onOpen } = useModalStore();
@@ -83,6 +89,9 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
                 "text-rose-500 hover:text-rose-500 focus:text-rose-500",
                 "hover:bg-rose-300/10 focus:bg-rose-300/10"
               )}
+              onClick={async ()=>{
+
+              }}
             >
               Delete Server
               <Icon path={mdiTrashCan} size={0.8} />
@@ -98,6 +107,9 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
                 "text-rose-500 hover:text-rose-500 focus:text-rose-500",
                 "hover:bg-rose-300/10 focus:bg-rose-300/10"
               )}
+              onClick={async () => {
+                await leaveServer(server?.id as string, user?.id as string);
+              }}
             >
               Leave Server
               <Icon path={mdiLogout} size={0.8} />

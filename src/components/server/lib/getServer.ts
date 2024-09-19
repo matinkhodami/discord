@@ -1,9 +1,12 @@
 import { db } from "@/lib/db"
-import { Server, Channel, Profile } from "@prisma/client"
+import { Server, Channel, Profile, MemberRole } from "@prisma/client"
 
 export type ServerInfo = Server & {
     members: (Profile & {
-        profile: Profile
+        profile: Profile 
+        
+    } & {
+        role: MemberRole
     })[]
     channels: (Channel & {
         profile: Profile

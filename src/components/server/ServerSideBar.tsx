@@ -1,4 +1,4 @@
-import { ChannelType } from "@prisma/client";
+import { ChannelType, MemberRole } from "@prisma/client";
 import type { ServerInfo } from "@/components/server/lib/getServer";
 // lib
 import userData from "@/lib/user/userData";
@@ -17,15 +17,14 @@ const ServerSideBar = async ({ server }: { server: ServerInfo | null }) => {
   const videoChannel = server?.channels.filter(
     (channel) => channel.type === ChannelType.VIDEO
   );
-
+  console.log("[Server]",server)
   // ALL member without us
   const members = server?.members.filter((member) => member.id !== user?.id);
   // our role
-  const role = server?.members.find((member) => member.id === user?.id);
+  const role = server?.members.find((member) => member.id === user?.id)?.role;
   return (
     <>
-      {/* FIXME ROLE PROBLEM  */}
-      <ServerHeader server={server} role={"ADMIN"} />
+      <ServerHeader server={server} role={role as MemberRole} />
     </>
   );
 };
