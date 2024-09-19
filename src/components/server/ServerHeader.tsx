@@ -1,4 +1,4 @@
-"use client"
+"use client";
 // Types
 import { MemberRole } from "@prisma/client";
 import { ServerInfo } from "./lib/getServer";
@@ -77,7 +77,13 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         {isAdmin && (
           <>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="flex justify-between w-full py-1 px-2 text-xs text-rose-500 hover:bg-rose-300/10 hover:text-rose-500">
+            <DropdownMenuItem
+              className={cn(
+                "flex justify-between w-full py-1 px-2 text-xs",
+                "text-rose-500 hover:text-rose-500 focus:text-rose-500",
+                "hover:bg-rose-300/10 focus:bg-rose-300/10"
+              )}
+            >
               Delete Server
               <Icon path={mdiTrashCan} size={0.8} />
             </DropdownMenuItem>
@@ -86,7 +92,13 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         {!isAdmin && (
           <>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="flex justify-between w-full py-1 px-2 text-xs text-rose-500 hover:bg-rose-300/10 hover:text-rose-500">
+            <DropdownMenuItem
+              className={cn(
+                "flex justify-between w-full py-1 px-2 text-xs ",
+                "text-rose-500 hover:text-rose-500 focus:text-rose-500",
+                "hover:bg-rose-300/10 focus:bg-rose-300/10"
+              )}
+            >
               Leave Server
               <Icon path={mdiLogout} size={0.8} />
             </DropdownMenuItem>
