@@ -15,8 +15,8 @@ const ServerIDlayout = async ({
   if (!profile) redirect("/signin");
   const server = await getServerInfo(params.serverID);
   return (
-    <div className="h-full w-full rounded-md flex gap-4">
-      <aside className="w-60 h-full dark:bg-darkSecondary bg-lightMuted rounded-md">
+    <div className="h-full w-full dark:rounded-md flex gap-2">
+      <aside className="w-60 h-full dark:bg-darkSecondary bg-lightMuted dark:rounded-md border-r-2 border-lightPrimary dark:border-r-0">
         <ServerSideBar server={server} />
       </aside>
       <main className="bg-secondary w-full rounded-md">{children}</main>

@@ -27,20 +27,20 @@ export default withUt({
         gray: "hsl(var(--gray))",
 
         // Custom Light
-        light: "#FEFFD2",
+        light: "#F7F7F7",
         // Custom Light
         lightPrimary: {
-          DEFAULT: "#FF7D29",
+          DEFAULT: "#FF971D",
           foreground: "#fff",
         },
         // Custom Light
         lightSecondary: {
-          DEFAULT: "#FFBF78",
+          DEFAULT: "#FFE8D6",
           foreground: "hsl(var(--secondary-foreground))",
         },
         // Custom Light
         lightMuted: {
-          DEFAULT: "#FFEEA9",
+          DEFAULT: "#F6F6F6",
           foreground: "hsl(var(--muted-foreground))",
         },
         // Custom Dark

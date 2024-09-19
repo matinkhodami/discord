@@ -43,7 +43,7 @@ const InviteModal = () => {
           description: "new server invite code generated!",
         });
       }
-      setInviteCode(updatedServer.data.inviteCode)
+      setInviteCode(updatedServer.data.inviteCode);
     } catch (error: any) {
       toast({
         title: "Error",
@@ -76,14 +76,18 @@ const InviteModal = () => {
         <div className="flex gap-2">
           <Input
             className="focus-visible:ring-offset-0 focus-visible:ring-0 text-primary"
-            value={inviteCode || serverData?.inviteCode || "" }
+            value={
+              `http://localhost:3000/invite/` +
+              (inviteCode || serverData?.inviteCode || "")
+            }
           />
           <Button
             size="icon"
             variant="default"
             onClick={() => {
               window.navigator.clipboard.writeText(
-                inviteCode || serverData?.inviteCode || ""
+                `http://localhost:3000/invite/` +
+                  (inviteCode || serverData?.inviteCode || "")
               );
               toast({
                 title: "invite code",
