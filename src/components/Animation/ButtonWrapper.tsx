@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 const ButtonWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <motion.span
+      className="w-full"
       initial={{
         scale: 1,
       }}

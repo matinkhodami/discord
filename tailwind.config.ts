@@ -49,12 +49,12 @@ export default withUt({
           DEFAULT: "#FD7014",
           foreground: "#fff",
         },
-        // Custom Light
+        // Custom Dark
         darkSecondary: {
           DEFAULT: "#393E46",
           foreground: "hsl(var(--secondary-foreground))",
         },
-        // Custom Light
+        // Custom Dark
         darkMuted: {
           DEFAULT: "#EEEEEE",
           foreground: "hsl(var(--muted-foreground))",
