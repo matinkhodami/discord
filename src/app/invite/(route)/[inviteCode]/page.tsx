@@ -21,12 +21,29 @@ const InviteCodepage = async ({
   const profile = await userData();
   if (!profile) return redirect("/signin");
 
+  const jointServer = await db.server.findFirst({
+    where: {
+      inviteCode: params.inviteCode,
+      members: {
+        some: {
+          profileID: profile.id,
+        },
+      },
+    },
+  });
+  if (jointServer) {
+    redirect(`/servers/${jointServer.id}`);
+  }
   const existServer = await db.server.findFirst({
     where: {
       inviteCode: params.inviteCode,
+      members: {
+        some: {
+          profileID: profile.id,
+        },
+      },
     },
   });
-  // TODO create a 404 page for invalid invite link
   if (!existServer) return null;
   return (
     <Card>
@@ -34,9 +51,7 @@ const InviteCodepage = async ({
         <CardTitle>Join Server</CardTitle>
         <CardDescription>Card Description</CardDescription>
       </CardHeader>
-      <CardContent>
-        
-      </CardContent>
+      <CardContent></CardContent>
       <CardFooter>
         <Button variant="default">Join</Button>
       </CardFooter>
