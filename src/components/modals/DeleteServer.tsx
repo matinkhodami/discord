@@ -2,7 +2,7 @@
 import useModalStore from "@/hooks/use-modal-store";
 import useUserData from "@/hooks/use-user";
 import { useRouter } from "next/navigation";
-import { Form, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
@@ -21,15 +21,17 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "../ui/button";
 import {
+  Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useRef } from "react";
+import { toast } from "@/hooks/use-toast";
 
 const DeleteServer = () => {
-  const user = useUserData();
   const router = useRouter();
   const {
     type,
@@ -51,31 +53,54 @@ const DeleteServer = () => {
       },
       {
         message: "Name does not match",
+        path: ["name"],
       }
     );
   // Form hook Setup
   const form = useForm<z.infer<typeof deleteServerSchema>>({
     resolver: zodResolver(deleteServerSchema),
+    defaultValues: {
+      name: "",
+    },
   });
   const {
     control,
     handleSubmit,
-    formState: { isSubmitting, errors },
+    formState: { isSubmitting, isSubmitted, errors },
   } = form;
 
   const handleOnOpen = () => {
     onClose();
   };
 
-  const onSubmit = async (data: z.infer<typeof deleteServerSchema>) => {
+  const onSubmit: SubmitHandler<z.infer<typeof deleteServerSchema>> = async (
+    data: z.infer<typeof deleteServerSchema>
+  ) => {
+    console.log("DELETE SERVER: ", server?.id);
     const res = await deleteServer(server?.id as string);
+    if (res.success) {
+      onClose();
+      toast({
+        title: "Success",
+        description: res.message,
+        variant: "default",
+      });
+      router.push("/");
+    } else {
+      form.reset()
+      toast({
+        title: "Error",
+        description: res.message,
+        variant: "destructive",
+      });
+    }
   };
   return (
     <Dialog open={isDeleteModalOpen} onOpenChange={handleOnOpen}>
       <DialogContent className="dark:bg-darkSecondary bg-lightMuted">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-light">
-            Delete <span className="text-destructive">{server?.name}</span>
+            Delete <span className="text-destructive">{server?.name}</span>{" "}
             Server
           </DialogTitle>
           <DialogDescription className="text-md">
@@ -87,7 +112,7 @@ const DeleteServer = () => {
         <Form {...form}>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-4 px-6"
           >
             <FormField
               control={control}
@@ -113,7 +138,7 @@ const DeleteServer = () => {
             />
           </form>
         </Form>
-        <DialogFooter className="bg-dark">
+        <DialogFooter className="bg-dark gap-2">
           <Button
             type="reset"
             size="full"
@@ -128,9 +153,7 @@ const DeleteServer = () => {
             size="full"
             variant="destructive"
             onClick={async () => {
-              handleOnOpen();
-              window.location.reload();
-              router.push("/");
+              await handleSubmit(onSubmit)();
             }}
           >
             Yes
