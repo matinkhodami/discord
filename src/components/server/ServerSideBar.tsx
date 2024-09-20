@@ -17,7 +17,6 @@ const ServerSideBar = async ({ server }: { server: ServerInfo | null }) => {
   const videoChannel = server?.channels.filter(
     (channel) => channel.type === ChannelType.VIDEO
   );
-  console.log("[Server]",server)
   // ALL member without us
   const members = server?.members.filter((member) => member.id !== user?.id);
   // our role

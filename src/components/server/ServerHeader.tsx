@@ -28,6 +28,7 @@ import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
 import useModalStore from "@/hooks/use-modal-store";
 import leaveServer from "./lib/leaveServer";
 import useUserData from "@/hooks/use-user";
+import deleteServer from "./lib/deleteServer";
 
 interface ServerHeaderProps {
   server: ServerInfo | null;
@@ -90,7 +91,7 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
                 "hover:bg-rose-300/10 focus:bg-rose-300/10"
               )}
               onClick={async ()=>{
-
+                await deleteServer(server?.id as string, user?.id as string);
               }}
             >
               Delete Server
