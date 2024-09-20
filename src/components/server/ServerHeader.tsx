@@ -17,7 +17,6 @@ import {
   mdiMenuDown,
   mdiAccountPlus,
   mdiPlus,
-  mdiSettingsHelper,
   mdiCog,
   mdiAccountMultiple,
   mdiTrashCan,
@@ -26,7 +25,6 @@ import {
 import { cn } from "@/lib/utils";
 import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
 import useModalStore from "@/hooks/use-modal-store";
-import leaveServer from "./lib/leaveServer";
 import useUserData from "@/hooks/use-user";
 import deleteServer from "./lib/deleteServer";
 
@@ -38,8 +36,9 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
   // user
   const user = useUserData();
 
-  const isAdmin = role === "ADMIN";
-  const isModerator = role === "MODERATOR";
+  const isAdmin = role === MemberRole.ADMIN;
+  const isModerator = role === MemberRole.MODERATOR;
+  console.log("[ServerHeader]: ",role)
   const { onOpen } = useModalStore();
   return (
     <DropdownMenu>

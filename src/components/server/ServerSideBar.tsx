@@ -4,9 +4,8 @@ import type { ServerInfo } from "@/components/server/lib/getServer";
 import userData from "@/lib/user/userData";
 // Components
 import ServerHeader from "./ServerHeader";
-import Loader from "../Animation/Loader";
 
-const ServerSideBar = async ({ server }: { server: ServerInfo | null }) => {
+const ServerSideBar = async ({ server }: { server: ServerInfo }) => {
   const user = await userData();
   const textChannel = server?.channels.filter(
     (channel) => channel.type === ChannelType.TEXT
@@ -20,7 +19,7 @@ const ServerSideBar = async ({ server }: { server: ServerInfo | null }) => {
   // ALL member without us
   const members = server?.members.filter((member) => member.id !== user?.id);
   // our role
-  const role = server?.members.find((member) => member.id === user?.id)?.role;
+  const role = server?.members.find((member) => member.profileID === user?.id)?.role
   return (
     <>
       <ServerHeader server={server} role={role as MemberRole} />

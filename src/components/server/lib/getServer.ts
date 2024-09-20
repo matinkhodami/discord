@@ -1,16 +1,9 @@
 import { db } from "@/lib/db"
-import { Server, Channel, Profile, MemberRole } from "@prisma/client"
+import { Server, Channel, Profile, MemberRole, Member } from "@prisma/client"
 
 export type ServerInfo = Server & {
-    members: (Profile & {
-        profile: Profile 
-        
-    } & {
-        role: MemberRole
-    })[]
-    channels: (Channel & {
-        profile: Profile
-    })[]
+    members: Member[]
+    channels: Channel[]
 }
 
 const getServerInfo = async (serverID: string): Promise<ServerInfo | null> => { 
