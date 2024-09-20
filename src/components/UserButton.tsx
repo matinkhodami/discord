@@ -32,10 +32,13 @@ const UserButton = async () => {
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="px-4 ml-4">
-        <DropdownMenuLabel>{user?.name}</DropdownMenuLabel>
+      <DropdownMenuContent className="p-2 ml-4 w-[200px]">
+        <DropdownMenuLabel>{user?.name?.replace(
+          user?.name?.charAt(0),
+          user?.name?.charAt(0).toLocaleUpperCase()
+        )}</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem className="w-full">
           <Button size="full" variant="ghost">
             <Icon path={mdiFaceMan} size={1} />
             <span>Profile</span>
@@ -44,7 +47,7 @@ const UserButton = async () => {
             </DropdownMenuShortcut>
           </Button>
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem className="w-full">
           <Button size="full" variant="ghost" event={logout}>
             <Icon path={mdiLogout} size={1} />
             <span>sign out</span>
