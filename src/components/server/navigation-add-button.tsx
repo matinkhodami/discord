@@ -19,8 +19,9 @@ const NavigationAddButton = () => {
       <ActionTooltip align="center" side="right" label="create a new server">
         <Button
           className={cn(
-            "w-[48px] h-[48px] rounded-[24px] hover:rounded-[16px] transition-all duration-300 ",
-            "dark:bg-dark dark:text-darkPrimary bg-lightPrimary text-dark hover:bg-lightPrimary hover:text-dark"
+            "w-[48px] h-[48px] rounded-[24px] transition-all duration-300 ",
+            "dark:bg-darkPrimary/20 dark:text-darkPrimary bg-lightPrimary text-dark",
+            "hover:dark:bg-darkPrimary/30 hover:bg-lightPrimary hover:text-dark hover:rounded-[16px]"
           )}
           event={() => onOpen("createServer")}
         >
