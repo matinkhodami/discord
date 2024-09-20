@@ -22,15 +22,19 @@ export default async function RootLayout({
   const session = await auth();
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className={cn(nunito.className, "dark:bg-dark bg-light", "antialiased")}>
+      <body
+        className={cn(nunito.className, "dark:bg-dark bg-light", "antialiased")}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <ModalProvider />
-          <SessionProvider session={session}>{children}</SessionProvider>
+          <SessionProvider session={session}>
+            <ModalProvider />
+            {children}
+          </SessionProvider>
           <Toaster />
         </ThemeProvider>
       </body>

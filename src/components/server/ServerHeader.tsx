@@ -35,9 +35,8 @@ interface ServerHeaderProps {
   role: MemberRole;
 }
 const ServerHeader = ({ server, role }: ServerHeaderProps) => {
-
   // user
-  const user = useUserData()
+  const user = useUserData();
 
   const isAdmin = role === "ADMIN";
   const isModerator = role === "MODERATOR";
@@ -90,7 +89,7 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
                 "text-rose-500 hover:text-rose-500 focus:text-rose-500",
                 "hover:bg-rose-300/10 focus:bg-rose-300/10"
               )}
-              onClick={async ()=>{
+              onClick={async () => {
                 await deleteServer(server?.id as string, user?.id as string);
               }}
             >
@@ -109,7 +108,8 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
                 "hover:bg-rose-300/10 focus:bg-rose-300/10"
               )}
               onClick={async () => {
-                await leaveServer(server?.id as string, user?.id as string);
+                onOpen("leaveServer", { server: server || undefined });
+                // await leaveServer(server?.id as string, user?.id as string);
               }}
             >
               Leave Server
