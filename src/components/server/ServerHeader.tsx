@@ -64,7 +64,12 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         </DropdownMenuItem>
         {(isAdmin || isModerator) && (
           <>
-            <DropdownMenuItem className="flex justify-between w-full py-1 px-2 text-xs">
+            <DropdownMenuItem
+              className="flex justify-between w-full py-1 px-2 text-xs"
+              onClick={() =>
+                onOpen("serverSettings", { server: server || undefined })
+              }
+            >
               Server Settings
               <Icon path={mdiCog} size={0.8} />
             </DropdownMenuItem>
@@ -107,7 +112,6 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
               )}
               onClick={async () => {
                 onOpen("leaveServer", { server: server || undefined });
-                // await leaveServer(server?.id as string, user?.id as string);
               }}
             >
               Leave Server
