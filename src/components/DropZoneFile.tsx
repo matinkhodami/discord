@@ -22,7 +22,6 @@ const DropZoneFile = ({ value, endPoint, onChange }: DropZoneFileProps) => {
         >
           <div className="relative w-24 h-24 mx-auto border-teal-300 border-2 rounded-full">
             <Image src={value} alt="uploaded file" fill className="rounded-full"/>
-            {/* TODO: DELETE FROM DB ALSO */}
             <span onClick={() => onChange("")} className="cursor-pointer">
               <Icon
                 path={mdiCloseCircle}
@@ -45,16 +44,16 @@ const DropZoneFile = ({ value, endPoint, onChange }: DropZoneFileProps) => {
               onChange(res[0].url);
             }}
             appearance={{
-              container: "dark:bg-teal-200/5 cursor-pointer",
-              label: "dark:text-teal-100/90",
+              container: "dark:bg-lightPrimary/5 cursor-pointer",
+              label: "dark:text-lightMuted/90",
               button: cn(
-                "bg-teal-700 focus:outline-none focus:border-none",
-                "ut-ready:bg-teal-700",
+                "bg-darkPrimary font-bold",
+                "ut-ready:bg-darkPrimary",
                 "ut-uploading:cursor-not-allowed",
-                "after:bg-teal-700/50"
+                "after:bg-darkPrimary/50"
               ),
-              uploadIcon: "text-teal-300/90",
-              allowedContent: "dark:text-teal-100/40",
+              uploadIcon: "text-lightMuted/90",
+              allowedContent: "dark:text-darkMuted/40",
             }}
           />
         </motion.div>

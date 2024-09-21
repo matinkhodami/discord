@@ -27,8 +27,6 @@ import { Button } from "@/components/ui/button";
 import DropZoneFile from "@/components/DropZoneFile";
 import { toast } from "@/hooks/use-toast";
 const InitialModal = () => {
-
-
   const formAtt = useForm<z.infer<typeof InitialServerSchema>>({
     resolver: zodResolver(InitialServerSchema),
     defaultValues: {
@@ -53,12 +51,12 @@ const InitialModal = () => {
   };
   return (
     <Dialog open>
-      <DialogContent className="dark:bg-zinc-950">
+      <DialogContent className="dark:bg-darkSecondary">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-light">
             Create a new server
           </DialogTitle>
-          <DialogDescription className="text-zinc-400 text-center">
+          <DialogDescription className="text-zinc-300 text-center">
             Give your server a personality with a name and an image. You can
             always change later!
           </DialogDescription>
@@ -66,7 +64,7 @@ const InitialModal = () => {
         <Form {...formAtt}>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-4 px-6"
           >
             <FormField
               control={control}
@@ -92,7 +90,7 @@ const InitialModal = () => {
               render={({ field }) => {
                 return (
                   <FormItem className="flex flex-col">
-                    <FormLabel className="text-teal-300 font-light text-base">
+                    <FormLabel className="text-orange-300 font-light text-base">
                       server name
                     </FormLabel>
                     <FormControl>
@@ -108,13 +106,17 @@ const InitialModal = () => {
                 );
               }}
             />
-            <DialogFooter>
-              <Button size="full" type="submit">
-                Create
-              </Button>
-            </DialogFooter>
           </form>
         </Form>
+        <DialogFooter className="bg-dark">
+          <Button
+            size="full"
+            type="submit"
+            onClick={() => handleSubmit(onSubmit)()}
+          >
+            Create
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
