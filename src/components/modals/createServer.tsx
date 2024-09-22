@@ -55,7 +55,7 @@ const CreateServerModal = () => {
     }
   };
 
-  const isCreateServerModelOpen = isOpen && type === "createServer"
+  const isCreateServerModelOpen = isOpen && type === "createServer";
   const handleOnOpen = () => {
     form.reset();
     onClose();
@@ -63,7 +63,7 @@ const CreateServerModal = () => {
 
   return (
     <Dialog open={isCreateServerModelOpen} onOpenChange={handleOnOpen}>
-      <DialogContent className="dark:bg-zinc-950">
+      <DialogContent className="dark:bg-darkSecondary">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-light">
             Create a new server
@@ -76,7 +76,7 @@ const CreateServerModal = () => {
         <Form {...form}>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-4 px-6"
           >
             <FormField
               control={control}
@@ -118,13 +118,15 @@ const CreateServerModal = () => {
                 );
               }}
             />
-            <DialogFooter>
-              <Button className="w-full" type="submit">
-                Create
-              </Button>
-            </DialogFooter>
           </form>
         </Form>
+        <DialogFooter className="dark:bg-dark">
+          <Button className="w-full" type="submit" onClick={()=>{
+            handleSubmit(onSubmit)()
+          }}>
+            Create
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
