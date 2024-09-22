@@ -1,4 +1,3 @@
-"use client";
 import useModalStore from "@/hooks/use-modal-store";
 import useUserData from "@/hooks/use-user";
 import { useRouter } from "next/navigation";
@@ -28,7 +27,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import DropZoneFile from "@/components/DropZoneFile";
-import { toast } from "@/hooks/use-toast";
 import ErrorWrapper from "@/components/Animation/ErrorWrapper";
 import Icon from "@mdi/react";
 import { mdiCog, mdiContentSaveAll } from "@mdi/js";

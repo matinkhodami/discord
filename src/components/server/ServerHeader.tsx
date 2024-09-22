@@ -73,7 +73,12 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
               Server Settings
               <Icon path={mdiCog} size={0.8} />
             </DropdownMenuItem>
-            <DropdownMenuItem className="flex justify-between w-full py-1 px-2 text-xs">
+            <DropdownMenuItem
+              className="flex justify-between w-full py-1 px-2 text-xs"
+              onClick={() => {
+                onOpen("manageUser", { server: server || undefined });
+              }}
+            >
               Manage Member
               <Icon path={mdiAccountMultiple} size={0.8} />
             </DropdownMenuItem>

@@ -1,7 +1,7 @@
 import { ServerInfo } from "@/components/server/lib/getServer";
 import { create } from "zustand";
 
-type ModalType = "createServer" | "invite" | "leaveServer" | "deleteServer" | "serverSettings";
+type ModalType = "createServer" | "invite" | "leaveServer" | "deleteServer" | "serverSettings" | "manageUser";
 interface ModalData {
   server?: ServerInfo;
 }
