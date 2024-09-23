@@ -30,7 +30,7 @@ const ManageUser = () => {
         onClose();
       }}
     >
-      <DialogContent className="dark:bg-darkSecondary">
+      <DialogContent className="dark:bg-darkSecondary pb-4">
         <DialogHeader>
           <DialogTitle className="text-center">Manage User</DialogTitle>
           <DialogDescription className="text-center">
@@ -39,9 +39,11 @@ const ManageUser = () => {
           </DialogDescription>
         </DialogHeader>
         <ScrollArea className="px-6">
-          {server.members.map((member) => (
-            <MemberItem member={member}/>
-          ))}
+          <div className="flex flex-col gap-2">
+            {server.members.map((member) => (
+              <MemberItem member={member} serverID={server.id} />
+            ))}
+          </div>
         </ScrollArea>
       </DialogContent>
     </Dialog>
