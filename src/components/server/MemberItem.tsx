@@ -25,6 +25,7 @@ import { changeUserRole } from "@/action/server/server";
 import { useRouter } from "next/navigation";
 import { toast } from "@/hooks/use-toast";
 import useModalStore from "@/hooks/use-modal-store";
+import Loader from "../Animation/Loader";
 
 const icons = {
   ADMIN: mdiChessKing,
@@ -45,9 +46,8 @@ const MemberItem = ({
   async function handleRole(newRole: MemberRole) {
     if (newRole === member.role) return;
     else {
-      console.log(newRole);
-      setIsMemberLoading(true);
       try {
+        setIsMemberLoading(true);
         const result = await changeUserRole(serverID, member.id, newRole);
         if (result.success) {
           toast({
@@ -87,7 +87,11 @@ const MemberItem = ({
       {member.role !== MemberRole.ADMIN && !isMemberLoading && (
         <DropdownMenu>
           <DropdownMenuTrigger className="ml-auto ring-offset-0 ring-0 focus:ring-0 focus:ring-offset-0">
-            <Icon path={mdiDotsVertical} size={0.8} />
+            {isMemberLoading ? (
+              <Loader />
+            ) : (
+              <Icon path={mdiDotsVertical} size={0.8} />
+            )}
           </DropdownMenuTrigger>
           <DropdownMenuContent side="left" className="p-1">
             <DropdownMenuSub>
