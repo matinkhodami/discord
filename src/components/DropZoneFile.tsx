@@ -20,7 +20,7 @@ const DropZoneFile = ({ value, endPoint, onChange }: DropZoneFileProps) => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
         >
-          <div className="relative w-24 h-24 mx-auto border-teal-300 border-2 rounded-full">
+          <div className="relative w-24 h-24 mx-auto border-lightAccent border-2 rounded-full">
             <Image src={value} alt="uploaded file" fill className="rounded-full"/>
             <span onClick={() => onChange("")} className="cursor-pointer">
               <Icon
@@ -44,13 +44,13 @@ const DropZoneFile = ({ value, endPoint, onChange }: DropZoneFileProps) => {
               onChange(res[0].url);
             }}
             appearance={{
-              container: "dark:bg-lightPrimary/5 cursor-pointer",
-              label: "dark:text-lightMuted/90",
+              container: "dark:bg-lightPrimary/5 cursor-pointer bg-lightPrimary/10",
+              label: "text-lightSecondary",
               button: cn(
-                "bg-darkPrimary font-bold",
-                "ut-ready:bg-darkPrimary",
+                "bg-lightSecondary font-bold",
+                "ut-ready:bg-lightSecondary",
                 "ut-uploading:cursor-not-allowed",
-                "after:bg-darkPrimary/50"
+                "after:bg-lightSecondary/50"
               ),
               uploadIcon: "text-lightMuted/90",
               allowedContent: "dark:text-darkMuted/40",

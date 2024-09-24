@@ -11,23 +11,23 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "dark:bg-darkSecondary bg-lightSecondary/80 dark:text-darkPrimary-foreground text-black hover:dark:bg-darkSecondary/80 hover:bg-lightSecondary/100 ",
+          "dark:bg-darkSecondary bg-lightSecondary dark:text-darkPrimary-foreground text-light hover:dark:bg-darkSecondary/80 hover:bg-lightSecondary/90 ",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90 !font-bold",
         outline:
-          "border border-input bg-light hover:bg-accent hover:text-accent-foreground",
+          "border border-lightAccent text-light hover:bg-lightAccent hover:text-accent-foreground",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        primary: "bg-lightPrimary font-bold"
+        primary: "bg-lightPrimary text-light font-bold"
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
-        full: "w-full h-8 px-2 gap-2",
+        full: "w-full h-8 gap-2",
       },
     },
     defaultVariants: {

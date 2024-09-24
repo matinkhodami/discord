@@ -90,12 +90,12 @@ const CreateChannel = () => {
   };
   return (
     <Dialog open={isCreateChannelOpen} onOpenChange={handleOnOpen}>
-      <DialogContent className="dark:bg-darkSecondary bg-lightMuted">
+      <DialogContent className="dark:bg-darkSecondary bg-light shadow-lightPrimary/50">
         <DialogHeader>
-          <DialogTitle className="text-xl font-light text-center">
+          <DialogTitle className="text-xl font-light text-center text-lightSecondary">
             Create Channel
           </DialogTitle>
-          <DialogDescription className="text-md text-center text-zinc-400">
+          <DialogDescription className="text-md text-center text-lightSecondary/50">
             in <span className="text-lightPrimary">{server?.name}</span>
           </DialogDescription>
         </DialogHeader>
@@ -111,11 +111,11 @@ const CreateChannel = () => {
                 return (
                   <FormItem className="flex flex-col">
                     <FormLabel className="font-light text-base">
-                      server name
+                      Channel name
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="server name"
+                        placeholder="Channel name"
                         type="text"
                         disabled={isSubmitting}
                         {...field}
@@ -137,7 +137,7 @@ const CreateChannel = () => {
                     </FormLabel>
                     <FormControl>
                       <Select onValueChange={field.onChange}>
-                        <SelectTrigger className="bg-zinc-300 rounded-md py-2 text-black capitalize">
+                        <SelectTrigger className="bg-lightSecondary/60 text-light rounded-md py-2 font-bold capitalize">
                           <SelectValue placeholder={field.value} />
                         </SelectTrigger>
                         <SelectContent>

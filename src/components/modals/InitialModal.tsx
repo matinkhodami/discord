@@ -51,12 +51,12 @@ const InitialModal = () => {
   };
   return (
     <Dialog open>
-      <DialogContent className="dark:bg-darkSecondary">
+      <DialogContent className="dark:bg-darkSecondary bg-light shadow-lightPrimary/30">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl font-light">
+          <DialogTitle className="text-center text-xl font-light text-lightSecondary">
             Create a new server
           </DialogTitle>
-          <DialogDescription className="text-zinc-300 text-center">
+          <DialogDescription className="text-lightSecondary/60 text-center">
             Give your server a personality with a name and an image. You can
             always change later!
           </DialogDescription>
@@ -90,7 +90,7 @@ const InitialModal = () => {
               render={({ field }) => {
                 return (
                   <FormItem className="flex flex-col">
-                    <FormLabel className="text-orange-300 font-light text-base">
+                    <FormLabel className="text-lightSecondary dark:text-lightPrimary font-light text-base">
                       server name
                     </FormLabel>
                     <FormControl>
@@ -108,9 +108,11 @@ const InitialModal = () => {
             />
           </form>
         </Form>
-        <DialogFooter className="bg-dark">
+        <DialogFooter className="dark:bg-dark rounded-b-xl">
           <Button
             size="full"
+            variant="primary"
+            className="text-white py-4"
             type="submit"
             onClick={() => handleSubmit(onSubmit)()}
           >

@@ -73,7 +73,7 @@ const ServerSettingsModal = () => {
 
   return (
     <Dialog open={isLeaveModalOpen} onOpenChange={handleOnOpen}>
-      <DialogContent className="dark:bg-darkSecondary bg-lightMuted">
+      <DialogContent className="dark:bg-darkSecondary bg-light shadow-lightPrimary/50">
         <DialogHeader>
           <DialogTitle className="text-xl font-light flex justify-center items-center gap-2">
             Settings <Icon path={mdiCog} size={0.8} />
@@ -108,12 +108,13 @@ const ServerSettingsModal = () => {
               render={({ field }) => {
                 return (
                   <FormItem className="flex flex-col">
-                    <FormLabel className="text-orange-300 font-light text-base">
+                    <FormLabel className="text-lightSecondary font-light text-base">
                       server name
                     </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="server name"
+                        className="text-lightSecondary"
                         type="text"
                         disabled={isSubmitting}
                         {...field}
@@ -126,8 +127,8 @@ const ServerSettingsModal = () => {
             />
           </form>
         </Form>
-        <DialogFooter className="bg-dark">
-          <Button size="full" onClick={() => handleSubmit(onSubmit)()}>
+        <DialogFooter className="rounded-b-xl">
+          <Button size="full" variant="primary" className="py-2" onClick={() => handleSubmit(onSubmit)()}>
             Save <Icon path={mdiContentSaveAll} size={0.8} />
           </Button>
         </DialogFooter>

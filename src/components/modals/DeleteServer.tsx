@@ -96,7 +96,7 @@ const DeleteServer = () => {
   };
   return (
     <Dialog open={isDeleteModalOpen} onOpenChange={handleOnOpen}>
-      <DialogContent className="dark:bg-darkSecondary bg-lightMuted">
+      <DialogContent className="dark:bg-darkSecondary bg-light shadow-lightPrimary/50">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-light">
             Delete <span className="text-destructive">{server?.name}</span>{" "}
@@ -137,10 +137,11 @@ const DeleteServer = () => {
             />
           </form>
         </Form>
-        <DialogFooter className="bg-dark gap-2">
+        <DialogFooter className="bg-lightSecondary gap-2 rounded-b-lg">
           <Button
             type="reset"
             size="full"
+            variant="outline"
             onClick={() => {
               handleOnOpen();
             }}

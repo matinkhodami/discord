@@ -55,9 +55,9 @@ const InviteModal = () => {
   };
   return (
     <Dialog open={isCreateServerModelOpen} onOpenChange={handleOnOpen}>
-      <DialogContent className="dark:bg-darkSecondary bg-lightMuted">
+      <DialogContent className="dark:bg-darkSecondary bg-light px-6 pb-6 shadow-lightPrimary/50">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl font-light">
+          <DialogTitle className="text-center text-xl font-light text-lightSecondary">
             Invite Your Friends
           </DialogTitle>
           {serverData && (
@@ -72,12 +72,12 @@ const InviteModal = () => {
             </DialogDescription>
           )}
         </DialogHeader>
-        <Label>Server Invite link</Label>
+        <Label className="text-lightSecondary">Server Invite link</Label>
         <div className="flex gap-2">
           <Input
-            className="focus-visible:ring-offset-0 focus-visible:ring-0 text-primary"
+            className="focus-visible:ring-offset-0 focus-visible:ring-0 text-lightSecondary"
             value={
-              `http://localhost:3000/invite/` +
+              `http://localhost:3000/invite/` + 
               (inviteCode || serverData?.inviteCode || "")
             }
           />

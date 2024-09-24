@@ -27,22 +27,28 @@ export default withUt({
         gray: "hsl(var(--gray))",
 
         // Custom Light
-        light: "#F7F7F7",
+        light: "#f0e9d1",
         // Custom Light
         lightPrimary: {
-          DEFAULT: "#FF971D",
+          DEFAULT: "#84653c",
           foreground: "#fff",
         },
         // Custom Light
         lightSecondary: {
-          DEFAULT: "#FFE8D6",
+          DEFAULT: "#30333b",
           foreground: "hsl(var(--secondary-foreground))",
         },
         // Custom Light
         lightMuted: {
-          DEFAULT: "#F6F6F6",
+          DEFAULT: "#1e1e25",
           foreground: "hsl(var(--muted-foreground))",
         },
+        // Custom Light
+        lightAccent: {
+          DEFAULT: "#bc915e",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+
         // Custom Dark
         dark: "#222831",
         darkPrimary: {

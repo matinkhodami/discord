@@ -45,7 +45,7 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         <button
           className={cn(
             "w-full border-4 border-b-0 focus:outline-none outline-none rounded-md flex justify-between px-2 py-1",
-            "bg-[#fff] border-lightMuted dark:bg-dark dark:border-darkSecondary"
+            "bg-lightPrimary text-white border-light dark:bg-dark dark:border-darkSecondary"
           )}
         >
           {server?.name}

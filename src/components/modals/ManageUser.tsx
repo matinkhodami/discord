@@ -30,9 +30,9 @@ const ManageUser = () => {
         onClose();
       }}
     >
-      <DialogContent className="dark:bg-darkSecondary pb-4">
+      <DialogContent className="dark:bg-darkSecondary bg-light pb-4 shadow-lightPrimary/50">
         <DialogHeader>
-          <DialogTitle className="text-center">Manage User</DialogTitle>
+          <DialogTitle className="text-center text-lightSecondary">Manage User</DialogTitle>
           <DialogDescription className="text-center">
             {server?.members.length}
             {server?.members.length > 1 ? " members" : " member"}
