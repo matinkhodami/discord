@@ -84,7 +84,13 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
             </DropdownMenuItem>
           </>
         )}
-        <DropdownMenuItem className="flex justify-between w-full py-1 px-2 text-xs">
+        <DropdownMenuItem
+          className="flex justify-between w-full py-1 px-2 text-xs"
+          onClick={() => {
+            console.log("CreateChannel")
+            onOpen("createChannel", { server: server || undefined });
+          }}
+        >
           Create channel
           <Icon path={mdiPlus} size={0.8} />
         </DropdownMenuItem>

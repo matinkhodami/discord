@@ -4,9 +4,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
-
-import { deleteServer } from "@/action/server/server";
-
 // UI Components
 import ErrorWrapper from "@/components/Animation/ErrorWrapper";
 import {
@@ -26,46 +23,48 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRef } from "react";
-import { useRouter } from "next/navigation";
 import { toast } from "@/hooks/use-toast";
+import { ChannelType } from "@prisma/client";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-const DeleteServer = () => {
-  const router = useRouter();
+const CreateChannel = () => {
   const {
     type,
     isOpen,
     onClose,
     data: { server },
   } = useModalStore();
-  const isDeleteModalOpen = isOpen && type === "deleteServer";
+  const isCreateChannelOpen = isOpen && type === "createChannel";
 
-  const deleteServerSchema = z
-    .object({
-      name: z.string().min(1, {
-        message: "Name is required",
+  const deleteServerSchema = z.object({
+    name: z
+      .string()
+      .min(1, {
+        message: "Channel name is required!",
+      })
+      .refine((name) => name !== "general", {
+        message: "Channel name cannot be 'general'",
       }),
-    })
-    .refine(
-      (data) => {
-        return data.name === server?.name;
-      },
-      {
-        message: "Name does not match",
-        path: ["name"],
-      }
-    );
+    channelType: z.nativeEnum(ChannelType),
+  });
   // Form hook Setup
   const form = useForm<z.infer<typeof deleteServerSchema>>({
     resolver: zodResolver(deleteServerSchema),
     defaultValues: {
       name: "",
+      channelType: "TEXT",
     },
   });
   const {
     control,
     handleSubmit,
-    formState: { isSubmitting, isSubmitted, errors },
+    formState: { isSubmitting, errors },
   } = form;
 
   const handleOnOpen = () => {
@@ -75,37 +74,17 @@ const DeleteServer = () => {
   const onSubmit: SubmitHandler<z.infer<typeof deleteServerSchema>> = async (
     data: z.infer<typeof deleteServerSchema>
   ) => {
-    console.log("DELETE SERVER: ", server?.id);
-    const res = await deleteServer(server?.id as string);
-    if (res.success) {
-      onClose();
-      toast({
-        title: "Success",
-        description: res.message,
-        variant: "default",
-      });
-      router.push("/");
-    } else {
-      form.reset()
-      toast({
-        title: "Error",
-        description: res.message,
-        variant: "destructive",
-      });
-    }
+    
   };
   return (
-    <Dialog open={isDeleteModalOpen} onOpenChange={handleOnOpen}>
+    <Dialog open={isCreateChannelOpen} onOpenChange={handleOnOpen}>
       <DialogContent className="dark:bg-darkSecondary bg-lightMuted">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl font-light">
-            Delete <span className="text-destructive">{server?.name}</span>{" "}
-            Server
+          <DialogTitle className="text-xl font-light text-center">
+            Create Channel
           </DialogTitle>
-          <DialogDescription className="text-md">
-            Are you sure you want to delete{" "}
-            <span className="text-destructive">{server?.name}</span> server?
-            This action cannot be undone!
+          <DialogDescription className="text-md text-center text-zinc-400">
+            in <span className="text-lightPrimary">{server?.name}</span>
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -135,27 +114,50 @@ const DeleteServer = () => {
                 );
               }}
             />
+            <FormField
+              control={control}
+              name="channelType"
+              render={({ field }) => {
+                return (
+                  <FormItem className="flex flex-col">
+                    <FormLabel className="font-light text-base">
+                      Channel Type
+                    </FormLabel>
+                    <FormControl>
+                      <Select onValueChange={field.onChange}>
+                        <SelectTrigger className="bg-zinc-300 rounded-md py-2 text-black capitalize">
+                          <SelectValue placeholder={field.value} />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {Object.values(ChannelType).map((item) => (
+                            <SelectItem
+                              key={item}
+                              value={item}
+                              className="capitalize"
+                            >
+                              {item.toLowerCase()}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <ErrorWrapper msg={errors.channelType?.message || ""} />
+                  </FormItem>
+                );
+              }}
+            />
           </form>
         </Form>
-        <DialogFooter className="bg-dark gap-2">
-          <Button
-            type="reset"
-            size="full"
-            onClick={() => {
-              handleOnOpen();
-            }}
-          >
-            No
-          </Button>
+        <DialogFooter className="dark:bg-dark gap-2">
           <Button
             type="submit"
             size="full"
-            variant="destructive"
+            variant="primary"
             onClick={async () => {
               await handleSubmit(onSubmit)();
             }}
           >
-            Yes
+            Create
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -163,4 +165,4 @@ const DeleteServer = () => {
   );
 };
 
-export default DeleteServer;
+export default CreateChannel;

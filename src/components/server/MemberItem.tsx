@@ -66,7 +66,7 @@ const MemberItem = ({
   }
   return (
     <div className="flex gap-2 items-center">
-      <Avatar className="dark:bg-dark w-10">
+      <Avatar className="dark:bg-dark w-10 bg-lightSecondary shadow">
         <AvatarImage src={member.profile.image as string} />
         <AvatarFallback>
           {member.profile.name.slice(0, 2).toLocaleUpperCase()}
