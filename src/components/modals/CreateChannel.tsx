@@ -1,4 +1,6 @@
 "use client";
+import { createChannel } from "@/action/server/server";
+
 import useModalStore from "@/hooks/use-modal-store";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -74,7 +76,17 @@ const CreateChannel = () => {
   const onSubmit: SubmitHandler<z.infer<typeof deleteServerSchema>> = async (
     data: z.infer<typeof deleteServerSchema>
   ) => {
-    
+    try {
+      const result = await createChannel(data, server?.id as string);
+      if ( result.success ) {
+        onClose()
+        console.log("[Channel]")
+      }
+    } catch (err) {
+      console.log("[CREATE_CHANNEL]: ", err)
+    } finally {
+      // nothing for now
+    }
   };
   return (
     <Dialog open={isCreateChannelOpen} onOpenChange={handleOnOpen}>

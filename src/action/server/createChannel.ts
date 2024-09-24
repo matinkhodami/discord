@@ -5,6 +5,14 @@ export default async function createChannel(
   data: { name: string; channelType: ChannelType },
   serverID: string
 ) {
+  if (!serverID) {
+    return {
+      message: "Server id not provided!",
+      success: false,
+      data: null,
+      status: 400,
+    };
+  }
   const profile = await userData();
 
   if (!profile)
@@ -12,7 +20,17 @@ export default async function createChannel(
       message: "Unauthorized!",
       success: false,
       data: null,
+      status: 401,
     };
+
+  if (data.name === "general")
+    return {
+      message: "channel name cannot be 'general'!",
+      success: false,
+      data: null,
+      status: 400,
+    };
+    
   const server = await db.server.findUnique({
     where: {
       id: serverID,
@@ -53,9 +71,10 @@ export default async function createChannel(
     });
 
     return {
-        message: "Channel successfully created!",
-        success: true,
-        data: null
-    }
+      message: "Channel successfully created!",
+      success: true,
+      data: null,
+      status: 200,
+    };
   }
 }
