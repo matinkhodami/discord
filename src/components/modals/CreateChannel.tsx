@@ -102,7 +102,7 @@ const CreateChannel = () => {
         <Form {...form}>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-4 px-6"
+            className="flex flex-col gap-4"
           >
             <FormField
               control={control}

@@ -1,6 +1,8 @@
 const ServerPage = ({}) => {
   return (
-    <div className="bg-lightMuted dark:bg-darkSecondary h-full rounded-md">ServerPage</div>
+    <div className="bg-light dark:bg-darkSecondary h-full">
+      ServerPage
+      </div>
   )
 }
 

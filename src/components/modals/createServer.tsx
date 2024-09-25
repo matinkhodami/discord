@@ -63,7 +63,7 @@ const CreateServerModal = () => {
 
   return (
     <Dialog open={isCreateServerModelOpen} onOpenChange={handleOnOpen}>
-      <DialogContent className="dark:bg-darkSecondary">
+      <DialogContent className="dark:bg-darkSecondary shadow-lightPrimary/50">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-light">
             Create a new server
@@ -121,9 +121,14 @@ const CreateServerModal = () => {
           </form>
         </Form>
         <DialogFooter className="dark:bg-dark">
-          <Button className="w-full" type="submit" onClick={()=>{
-            handleSubmit(onSubmit)()
-          }}>
+          <Button
+            className="w-full"
+            type="submit"
+            variant="primary"
+            onClick={() => {
+              handleSubmit(onSubmit)();
+            }}
+          >
             Create
           </Button>
         </DialogFooter>
