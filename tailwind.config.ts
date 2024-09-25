@@ -50,19 +50,19 @@ export default withUt({
         },
 
         // Custom Dark
-        dark: "#222831",
+        dark: "#3b261b",
         darkPrimary: {
-          DEFAULT: "#FD7014",
-          foreground: "#fff",
+          DEFAULT: "#ecdcb9",
+          foreground: "#3b261b",
         },
         // Custom Dark
         darkSecondary: {
-          DEFAULT: "#393E46",
+          DEFAULT: "#84653c",
           foreground: "hsl(var(--secondary-foreground))",
         },
         // Custom Dark
-        darkMuted: {
-          DEFAULT: "#EEEEEE",
+        darkAccent: {
+          DEFAULT: "#dcc371",
           foreground: "hsl(var(--muted-foreground))",
         },
 
