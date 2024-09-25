@@ -11,12 +11,12 @@ const NavigationSideBar = ({ servers }: { servers: Server[] }) => {
     <aside
       className={cn(
         "hidden sm:flex sm:flex-col sm:justify-between sm:items-center w-[66px] h-full dark:rounded-md p-2 shadow-inner border-r-2 border-lightPrimary dark:border-r-0",
-        "bg-light dark:bg-darkSecondary"
+        "bg-light dark:bg-darkSecondary/20"
       )}
     >
       <div className="flex flex-col gap-2">
         <NavigationAddButton />
-        <Separator className="w-full h-[1px] bg-darkSecondary dark:bg-darkMuted" />
+        <Separator className="w-full h-[1px] bg-darkSecondary dark:bg-darkPrimary" />
         <ScrollArea>
           <div className="flex flex-col py-2">
             {servers.map((server) => (

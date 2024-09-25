@@ -68,7 +68,7 @@ const ServerSideBar = async ({ server }: { server: ServerInfo }) => {
   return (
     <>
       <ServerHeader server={server} role={role as MemberRole} />
-      <div className="p-1">
+      <div>
         <Search
           data={[
             {

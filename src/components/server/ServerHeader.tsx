@@ -37,14 +37,13 @@ const ServerHeader = ({ server, role }: ServerHeaderProps) => {
 
   const isAdmin = role === MemberRole.ADMIN;
   const isModerator = role === MemberRole.MODERATOR;
-  console.log("[ServerHeader]: ", role);
   const { onOpen } = useModalStore();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="w-full" asChild>
         <button
           className={cn(
-            "w-full border-4 border-b-0 focus:outline-none outline-none rounded-md flex justify-between px-2 py-1",
+            "w-full border-b-0 focus:outline-none outline-none rounded-md flex justify-between px-2 py-1",
             "bg-lightPrimary text-white border-light dark:bg-dark dark:border-darkSecondary"
           )}
         >
