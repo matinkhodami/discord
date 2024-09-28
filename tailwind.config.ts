@@ -1,5 +1,5 @@
 import { withUt } from "uploadthing/tw";
- 
+
 export default withUt({
   darkMode: ["class"],
   content: [
@@ -26,16 +26,21 @@ export default withUt({
         foreground: "hsl(var(--foreground))",
         gray: "hsl(var(--gray))",
 
+        // Icons color
+        PrimaryIcon: "#CC3333",
+        SecondaryIcon: "#1C39BB",
+        NormalIcon: "#00A693",
+
         // Custom Light
-        light: "#f0e9d1",
+        light: "#c8c9b5",
         // Custom Light
         lightPrimary: {
-          DEFAULT: "#84653c",
+          DEFAULT: "#417039",
           foreground: "#fff",
         },
         // Custom Light
         lightSecondary: {
-          DEFAULT: "#30333b",
+          DEFAULT: "#2c303e",
           foreground: "hsl(var(--secondary-foreground))",
         },
         // Custom Light

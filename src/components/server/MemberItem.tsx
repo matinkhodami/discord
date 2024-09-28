@@ -26,6 +26,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "@/hooks/use-toast";
 import useModalStore from "@/hooks/use-modal-store";
 import Loader from "../Animation/Loader";
+import { cn } from "@/lib/utils";
 
 const icons = {
   ADMIN: mdiChessKing,
@@ -66,23 +67,29 @@ const MemberItem = ({
   }
   return (
     <div className="flex gap-2 items-center">
-      <Avatar className="dark:bg-dark w-10 bg-lightSecondary shadow-md">
+      <Avatar className="dark:bg-darkSecondary w-10 bg-lightSecondary shadow-md">
         <AvatarImage src={member.profile.image as string} />
         <AvatarFallback className="text-light">
           {member.profile.name.slice(0, 2).toLocaleUpperCase()}
         </AvatarFallback>
       </Avatar>
       <div className="flex flex-col">
-        <p className="capitalize p-0 m-0 font-bold text-lightSecondary">{member.profile.name}</p>
-        <p className="p-0 m-0 text-lightSecondary/60">{member.profile.email}</p>
+        <p className="capitalize p-0 m-0 font-bold text-lightSecondary dark:text-darkPrimary">
+          {member.profile.name}
+        </p>
+        <p className="p-0 m-0 text-lightSecondary/60 dark:text-darkPrimary/60">
+          {member.profile.email}
+        </p>
       </div>
       <Icon
         path={icons[member.role] as string}
         size={0.7}
-        className={
-          "text-darkPrimary ml-2 " +
-          (member.role === MemberRole.ADMIN && " ml-auto")
-        }
+        className={cn(
+          "text-darkPrimary ml-2",
+          member.role === MemberRole.ADMIN && "ml-auto",
+          member.role === MemberRole.ADMIN && "text-PrimaryIcon",
+          member.role === MemberRole.MODERATOR && "text-SecondaryIcon",
+        )}
       />
       {member.role !== MemberRole.ADMIN && !isMemberLoading && (
         <DropdownMenu>

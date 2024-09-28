@@ -50,7 +50,6 @@ const ServerSettingsModal = () => {
   });
 
   const {
-    setValue,
     getValues,
     control,
     handleSubmit,
@@ -73,10 +72,10 @@ const ServerSettingsModal = () => {
 
   return (
     <Dialog open={isLeaveModalOpen} onOpenChange={handleOnOpen}>
-      <DialogContent className="dark:bg-darkSecondary bg-light shadow-lightPrimary/50">
+      <DialogContent className="bg-light shadow-lightPrimary/50 dark:bg-dark/90 pt-6">
         <DialogHeader>
-          <DialogTitle className="text-xl font-light flex justify-center items-center gap-2">
-            Settings <Icon path={mdiCog} size={0.8} />
+          <DialogTitle className="text-xl font-light flex justify-center items-center gap-2 dark:text-darkPrimary">
+            <Icon path={mdiCog} size={0.8} /> Settings
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>
@@ -108,13 +107,13 @@ const ServerSettingsModal = () => {
               render={({ field }) => {
                 return (
                   <FormItem className="flex flex-col">
-                    <FormLabel className="text-lightSecondary font-light text-base">
+                    <FormLabel className="dark:text-darkSecondary text-lightSecondary font-light text-base">
                       server name
                     </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="server name"
-                        className="text-lightSecondary"
+                        className="text-lightSecondary dark:text-darkPrimary"
                         type="text"
                         disabled={isSubmitting}
                         {...field}
@@ -127,8 +126,13 @@ const ServerSettingsModal = () => {
             />
           </form>
         </Form>
-        <DialogFooter className="rounded-b-xl">
-          <Button size="full" variant="primary" className="py-2" onClick={() => handleSubmit(onSubmit)()}>
+        <DialogFooter className="rounded-b-xl bg-lightPrimary/20 p-6">
+          <Button
+            size="full"
+            variant="primary"
+            className="py-2"
+            onClick={() => handleSubmit(onSubmit)()}
+          >
             Save <Icon path={mdiContentSaveAll} size={0.8} />
           </Button>
         </DialogFooter>

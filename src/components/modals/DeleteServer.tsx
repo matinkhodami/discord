@@ -96,13 +96,13 @@ const DeleteServer = () => {
   };
   return (
     <Dialog open={isDeleteModalOpen} onOpenChange={handleOnOpen}>
-      <DialogContent className="dark:bg-darkSecondary bg-light shadow-lightPrimary/50">
+      <DialogContent className="dark:bg-darkSecondary bg-light shadow-lightPrimary/50 pt-6">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl font-light">
+          <DialogTitle className="text-center text-xl font-semibold text-lightSecondary">
             Delete <span className="text-destructive">{server?.name}</span>{" "}
             Server
           </DialogTitle>
-          <DialogDescription className="text-md">
+          <DialogDescription className="text-md text-lightSecondary/80 px-6">
             Are you sure you want to delete{" "}
             <span className="text-destructive">{server?.name}</span> server?
             This action cannot be undone!
@@ -119,7 +119,7 @@ const DeleteServer = () => {
               render={({ field }) => {
                 return (
                   <FormItem className="flex flex-col">
-                    <FormLabel className="font-light text-base">
+                    <FormLabel className="font-light text-base text-lightPrimary">
                       server name
                     </FormLabel>
                     <FormControl>
@@ -137,7 +137,7 @@ const DeleteServer = () => {
             />
           </form>
         </Form>
-        <DialogFooter className="bg-lightSecondary gap-2 rounded-b-lg">
+        <DialogFooter className="bg-lightPrimary/10 gap-2 rounded-b-lg p-6">
           <Button
             type="reset"
             size="full"

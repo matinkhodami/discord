@@ -90,19 +90,19 @@ const CreateChannel = () => {
   };
   return (
     <Dialog open={isCreateChannelOpen} onOpenChange={handleOnOpen}>
-      <DialogContent className="dark:bg-darkSecondary bg-light shadow-lightPrimary/50">
+      <DialogContent className="dark:bg-dark bg-light shadow-lightPrimary/50 pt-6">
         <DialogHeader>
-          <DialogTitle className="text-xl font-light text-center text-lightSecondary">
+          <DialogTitle className="text-xl font-light text-center text-lightSecondary dark:text-darkPrimary">
             Create Channel
           </DialogTitle>
-          <DialogDescription className="text-md text-center text-lightSecondary/50">
+          <DialogDescription className="text-md text-center text-lightSecondary/50 dark:text-darkPrimary/60">
             in <span className="text-lightPrimary">{server?.name}</span>
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-4 px-6"
           >
             <FormField
               control={control}
@@ -110,7 +110,7 @@ const CreateChannel = () => {
               render={({ field }) => {
                 return (
                   <FormItem className="flex flex-col">
-                    <FormLabel className="font-light text-base">
+                    <FormLabel className="font-light text-base dark:text-darkSecondary text-lightSecondary">
                       Channel name
                     </FormLabel>
                     <FormControl>
@@ -137,10 +137,10 @@ const CreateChannel = () => {
                     </FormLabel>
                     <FormControl>
                       <Select onValueChange={field.onChange}>
-                        <SelectTrigger className="bg-lightSecondary/60 text-light rounded-md py-2 font-bold capitalize">
+                        <SelectTrigger className="bg-lightSecondary/20 focus:outline-none border-0 ring-0 focus:ring-offset-0 text-lightSecondary/80 rounded-md py-2 font-bold capitalize">
                           <SelectValue placeholder={field.value} />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-lightSecondary/30 backdrop-blur-2xl">
                           {Object.values(ChannelType).map((item) => (
                             <SelectItem
                               key={item}
@@ -160,7 +160,7 @@ const CreateChannel = () => {
             />
           </form>
         </Form>
-        <DialogFooter className="dark:bg-dark gap-2">
+        <DialogFooter className="dark:bg-dark gap-2 p-6 bg-lightPrimary/20 rounded-b-md">
           <Button
             type="submit"
             size="full"

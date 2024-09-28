@@ -26,6 +26,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import DropZoneFile from "@/components/DropZoneFile";
 import { toast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 const InitialModal = () => {
   const formAtt = useForm<z.infer<typeof InitialServerSchema>>({
     resolver: zodResolver(InitialServerSchema),
@@ -51,7 +52,7 @@ const InitialModal = () => {
   };
   return (
     <Dialog open>
-      <DialogContent className="dark:bg-darkSecondary bg-light shadow-lightPrimary/30">
+      <DialogContent className={cn("dark:bg-darkSecondary bg-light shadow-lightPrimary/30")}>
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-light text-lightSecondary">
             Create a new server

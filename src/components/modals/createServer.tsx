@@ -63,12 +63,12 @@ const CreateServerModal = () => {
 
   return (
     <Dialog open={isCreateServerModelOpen} onOpenChange={handleOnOpen}>
-      <DialogContent className="dark:bg-darkSecondary shadow-lightPrimary/50">
+      <DialogContent className="dark:bg-darkSecondary shadow-lightPrimary/50 bg-light">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl font-light">
+          <DialogTitle className="text-center text-xl font-semibold text-lightSecondary">
             Create a new server
           </DialogTitle>
-          <DialogDescription className="text-zinc-400 text-center">
+          <DialogDescription className="text-lightSecondary/50 text-center">
             Give your server a personality with a name and an image. You can
             always change later!
           </DialogDescription>
